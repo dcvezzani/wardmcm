@@ -25,5 +25,17 @@
   <%= @user.oauth_expires_at %>
 </p>
 
+<p>
+  <%= show_info_items "Email addresses", @user.email_addresses %>
+</p>
+
+<p>
+  <%= show_info_items "Phone numbers", @user.phone_numbers %>
+</p>
+
+<p>
+  <%= show_info_items "Callings", @user.callings %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

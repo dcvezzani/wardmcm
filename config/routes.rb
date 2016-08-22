@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :assignments
+
+  resources :tasks
+
+  resources :contact_infos
+
   get 'welcome/index'
 
   resources :users
