@@ -8,7 +8,8 @@
       <th>Name</th>
       <th>Description</th>
       <th>Status</th>
-      <th>Assigned by</th>
+      <th>Requester</th>
+      <th>Owners</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +20,8 @@
         <td><%= task.name %></td>
         <td><%= task.description %></td>
         <td><%= task.status %></td>
-        <td><%= task.assigned_by_id %></td>
+        <td><%= (task.requester and task.requester.name) %></td>
+        <td><%= task.owners.map(&:name).join(", ") %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

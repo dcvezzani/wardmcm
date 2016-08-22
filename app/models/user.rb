@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Common
   ROLES = %w[admin member guest banned].freeze
 
   has_many :contact_infos
@@ -8,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :requested_tasks, foreign_key: :assigned_by_id, class_name: 'Task'
   has_many :assignments, foreign_key: :assigned_to_id
   has_many :tasks, through: :assignments
-  has_many :notes, as: :notable
 
   def self.from_omniauth(auth)
       where(auth.slice(:provider, :uid).to_hash).first_or_initialize.tap do |user|
