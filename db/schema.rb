@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821235218) do
+ActiveRecord::Schema.define(version: 20160822001102) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "task_id",        limit: 4
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20160821235218) do
     t.text     "value",      limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.integer  "notable_id",   limit: 4
+    t.string   "notable_type", limit: 255
+    t.integer  "author_id",    limit: 4
+    t.string   "title",        limit: 255
+    t.text     "body",         limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "tasks", force: :cascade do |t|

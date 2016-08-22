@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  notable_id: 1
+  notable_type: MyString
+  author_id: 1
+  title: MyString
+  body: MyText
+
+two:
+  notable_id: 1
+  notable_type: MyString
+  author_id: 1
+  title: MyString
+  body: MyText
