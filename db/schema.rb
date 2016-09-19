@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 20160822003318) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "audit_logs", force: :cascade do |t|
-    t.integer  "auditable_id",   limit: 4
-    t.string   "auditable_type", limit: 255
-    t.integer  "author_id",      limit: 4
-    t.string   "summary",        limit: 255
-    t.text     "details",        limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
   create_table "audits", force: :cascade do |t|
     t.integer  "auditable_id",    limit: 4
     t.string   "auditable_type",  limit: 255
