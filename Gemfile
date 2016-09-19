@@ -61,3 +61,9 @@ end
 
 gem 'bower-rails'
 
+gem "foreman"
+group :production, :staging do
+  gem "rails_12factor"
+  gem "rails_stdout_logging"
+  gem "rails_serve_static_assets"
+end
