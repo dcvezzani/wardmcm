@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'capybara/rails'
 require 'capybara/rspec'
 
@@ -86,7 +85,8 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/v/3-0/docs
   config.infer_spec_type_from_file_location!
 
-  config.treat_symbols_as_metadata_keys_with_true_values = true
+  # deprecated, it is now set to true as default and setting it to false has no effect.
+  # config.treat_symbols_as_metadata_keys_with_true_values = true
 
   # use different browser for capybara testing
   # https://sakib.wordpress.com/2015/10/25/cucumbercapybara-run-tests-on-firefox-chrome-safari/
