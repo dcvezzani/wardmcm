@@ -13,3 +13,21 @@ test:
   password: rails.pass13!#
   encoding: utf8
   pool: 5
+
+
+# CREATE USER rails with SUPERUSER CREATEDB password 'rails.pass13!#';
+# CREATE DATABASE wc_test OWNER rails;
+# GRANT ALL ON DATABASE wc_test TO rails; 
+#     
+#
+# GRANT USAGE ON *.* TO 'rails'@'127.0.0.1' IDENTIFIED BY PASSWORD 'rails.pass13!#';
+# GRANT USAGE ON *.* TO 'rails'@'localhost';
+# SET PASSWORD FOR 'rails'@'localhost' = PASSWORD('rails.pass13!#');
+#
+#
+# IDENTIFIED BY PASSWORD 'rails.pass13!#';
+# GRANT ALL PRIVILEGES ON `wc_test`.* TO 'rails'@'127.0.0.1';
+# GRANT ALL PRIVILEGES ON `wc_test`.* TO 'rails'@'localhost';
+#
+# FLUSH PRIVILEGES;
+#

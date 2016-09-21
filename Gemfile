@@ -38,10 +38,10 @@ group :development, :test do
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  #gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  #gem 'spring'
 end
 
 gem 'omniauth'
@@ -52,8 +52,13 @@ gem "cancan"
 # http://angular-rails.com/
 gem 'sass'
 group :test, :development do
-  gem "rspec-rails", "~> 2.0"
-  gem "factory_girl_rails", "~> 4.0"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+
+  # https://github.com/copiousfreetime/launchy
+  # save_and_open_page
+  gem "launchy" 
+
   gem "capybara"
   gem "database_cleaner"
   gem "selenium-webdriver"
@@ -61,12 +66,12 @@ end
 
 gem 'bower-rails'
 
-gem "foreman"
-group :production, :staging do
-  gem "rails_12factor"
-  gem "rails_stdout_logging"
-  gem "rails_serve_static_assets"
-end
+# gem "foreman"
+# group :production, :staging do
+#   gem "rails_12factor"
+#   gem "rails_stdout_logging"
+#   gem "rails_serve_static_assets"
+# end
 
 gem 'angular-rails-templates'
 
