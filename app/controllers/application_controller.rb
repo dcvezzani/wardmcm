@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    respond_to do |type|
+      type.all  { render :nothing => true, :status => 404 }
+    end
+  end
+
   private
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
