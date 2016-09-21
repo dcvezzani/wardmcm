@@ -1,5 +1,3 @@
-require 'spec_helper.rb'
-
 feature "Looking up recipes", js: true do
   scenario "finding recipes" do
     visit '/'
