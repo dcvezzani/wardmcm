@@ -75,5 +75,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :create, :update, :destroy]
 end
