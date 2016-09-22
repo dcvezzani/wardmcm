@@ -19,7 +19,7 @@ receta.config([ '$routeProvider', 'flashProvider',
       .when('/',
         templateUrl: "index.html"
         controller: 'RecipesController'
-      .when('/recipes/list',
+      ).when('/recipes/list',
         templateUrl: "index.html"
         controller: 'RecipesController'
       ).when('/recipes/new',
