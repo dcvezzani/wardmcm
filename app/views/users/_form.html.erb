@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= simple_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -42,6 +42,17 @@
   <%= label_tag "user_roles_#{role}", role.humanize %><br />
 <% end %>
 <%= hidden_field_tag "user[roles][]", "" %>  
+  </div>
+
+  <h3>Contact Infos</h3>
+      <div class="links">
+        <%= link_to_add_association('add contact_info', f, :contact_infos, {"data-association-insertion-method" => :after}) %>
+      </div>
+
+  <div id="contact_infos">
+    <%= f.simple_fields_for :contact_infos do |contact_info| %>
+      <%= render 'contact_info_fields', f: contact_info %>
+    <% end %>
   </div>
 
   <div class="actions">

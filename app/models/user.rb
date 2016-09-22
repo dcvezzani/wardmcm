@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :assignments, foreign_key: :assigned_to_id
   has_many :tasks, through: :assignments
 
+  accepts_nested_attributes_for :contact_infos, reject_if: :all_blank, allow_destroy: true
+
   def self.from_omniauth(auth)
       where(auth.slice(:provider, :uid).to_hash).first_or_initialize.tap do |user|
 

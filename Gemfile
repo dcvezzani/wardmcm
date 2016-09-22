@@ -70,3 +70,8 @@ gem 'bower-rails'
 
 gem 'angular-rails-templates'
 
+# https://github.com/plataformatec/simple_form#usage
+gem 'simple_form'
+gem 'country_select'
+
+gem "cocoon"
