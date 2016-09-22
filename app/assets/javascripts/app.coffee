@@ -19,6 +19,9 @@ receta.config([ '$routeProvider', 'flashProvider',
       .when('/',
         templateUrl: "index.html"
         controller: 'RecipesController'
+      .when('/recipes/list',
+        templateUrl: "index.html"
+        controller: 'RecipesController'
       ).when('/recipes/new',
         templateUrl: "form.html"
         controller: 'RecipeController'        
