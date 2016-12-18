@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
-
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -71,6 +69,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:provider, :uid, :name, :oauth_token, :oauth_expires_at, contact_infos_attributes: [:id, :user_id, :type, :name, :value, :_destroy])
+      params.require(:user).permit(:provider, :uid, :name, :oauth_token, :oauth_expires_at, :email, :roles_mask)
     end
 end

@@ -1,61 +1,30 @@
 <%= simple_form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <div class="form-inputs">
+    <%= f.input :provider %>
+    <%= f.input :uid %>
+    <%= f.input :name %>
+    <%= f.input :oauth_token %>
+    <%= f.input :oauth_expires_at %>
+    <%= f.input :email %>
+    <%= f.input :roles_mask %>
+    <%#= f.association :roles_mask, collection: User::ROLES, prompt: "Grant roles" %>
+    <%#= f.collection_check_boxes :roles_mask, User::ROLES.inject.with_index({}){|hash, role, idx| hash.merge!({role: idx})}, :first, :last %>
+    <%= f.collection_check_boxes :roles_mask, User::ROLES.inject.with_index({}){|hash, role, idx| hash.merge!({role: idx})}, :first, :last %>
+
+    <div class="form-group string optional user_roles">
+      <label class="control-label string optional" for="user_role">Roles</label>
+
+      <% for role in User::ROLES %>
+        <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
+        <%= label_tag "user_roles_#{role}", role.humanize %><br />
       <% end %>
-      </ul>
+      <%= hidden_field_tag "user[roles][]", "" %>  
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :provider %><br>
-    <%= f.text_field :provider %>
-  </div>
-  <div class="field">
-    <%= f.label :uid %><br>
-    <%= f.text_field :uid %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :oauth_token %><br>
-    <%= f.text_field :oauth_token %>
-  </div>
-  <div class="field">
-    <%= f.label :oauth_expires_at %><br>
-    <%= f.datetime_select :oauth_expires_at %>
   </div>
 
-  <div class="field">
-<% for role in User::ROLES %>
-  <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-  <%= label_tag "user_roles_#{role}", role.humanize %><br />
-<% end %>
-<%= hidden_field_tag "user[roles][]", "" %>  
-  </div>
-
-  <h3>Contact Infos</h3>
-      <div class="links">
-        <%= link_to_add_association('add contact_info', f, :contact_infos, {"data-association-insertion-method" => :after}) %>
-      </div>
-
-  <div id="contact_infos">
-    <%= f.simple_fields_for :contact_infos do |contact_info| %>
-      <%= render 'contact_info_fields', f: contact_info %>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

@@ -26,15 +26,13 @@
 </p>
 
 <p>
-  <%= show_info_items "Email addresses", @user.email_addresses %>
+  <strong>Email:</strong>
+  <%= @user.email %>
 </p>
 
 <p>
-  <%= show_info_items "Phone numbers", @user.phone_numbers %>
-</p>
-
-<p>
-  <%= show_info_items "Callings", @user.callings %>
+  <strong>Roles mask:</strong>
+  <%= @user.roles_mask %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
