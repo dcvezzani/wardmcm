@@ -22,3 +22,5 @@ public/assets
 log
 
 out.txt
+
+.byebug_history
