@@ -4,6 +4,8 @@ asset 'angular-resource'
 asset 'angular-mocks'
 asset 'bootstrap-sass-official'
 asset 'angular-flash'
+asset 'jquery-ui'
+asset 'jquery-timepicker'
 # vim: ft=ruby
 
 

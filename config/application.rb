@@ -25,6 +25,8 @@ module Wardmcm
 
     config.assets.paths << Rails.root.join("vendor","assets","bower_components")
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","jquery-ui","themes","black-tie")
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","jquery-timepicker")
 
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|woff2)$)    
   end
