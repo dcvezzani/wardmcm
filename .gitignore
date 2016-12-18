@@ -20,3 +20,5 @@ doc-tutorials
 public/assets
 *.session
 log
+
+out.txt
