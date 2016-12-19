@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :load_roles
 
   # GET /users
   # GET /users.json
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+    debugger
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -62,13 +64,19 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:provider, :uid, :name, :oauth_token, :oauth_expires_at, :email, :roles_mask)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:provider, :uid, :name, :oauth_token, {:oauth_expires_at => [:date, :time]}, :phone, :email, :roles_mask => [])
+  end
+
+  def load_roles
+    @roles = User::ROLES.map.with_index{|role, idx| Role.new({name: role.humanize, value: idx}) }
+  end
+
 end

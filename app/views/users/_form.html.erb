@@ -9,23 +9,19 @@
     <%= f.input :oauth_expires_at %>
     <%= f.input :phone %>
     <%= f.input :email %>
-    <%= f.input :roles_mask %>
 
-    <%#= f.association :roles_mask, collection: User::ROLES, prompt: "Grant roles" %>
-    <%#= f.collection_check_boxes :roles_mask, User::ROLES.inject.with_index({}){|hash, role, idx| hash.merge!({role: idx})}, :first, :last %>
+    <%= f.collection_check_boxes :roles_mask, @roles, :value, :name, :item_wrapper_class => 'checkbox_container' %>
 
-    <%= f.collection_check_boxes :roles_mask, User::ROLES.map.with_index{|role, idx| {name: role, value: idx}}, :name, :value %>
-
-    <div class="form-group string optional user_roles">
-      <label class="control-label string optional" for="user_role">Roles</label> <br>
-
-      <% for role in User::ROLES %>
-        <%= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%>
-        <%= label_tag "user_roles_#{role}", role.humanize %><br />
-      <% end %>
-      <%= hidden_field_tag "user[roles][]", "" %>  
-    </div>
-  </div>
+  <!--   <div class="form&#45;group string optional user_roles"> -->
+  <!--     <label class="control&#45;label string optional" for="user_role">Roles</label> <br> -->
+  <!--  -->
+  <!--     <%# for role in User::ROLES %> -->
+  <!--       <%#= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), {:name => "user[roles][]"}%> -->
+  <!--       <%#= label_tag "user_roles_#{role}", role.humanize %><br /> -->
+  <!--     <%# end %> -->
+  <!--     <%#= hidden_field_tag "user[roles][]", "" %>   -->
+  <!--   </div> -->
+  <!-- </div> -->
 
   <div class="form-actions">
     <%= f.button :submit %>
