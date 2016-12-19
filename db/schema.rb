@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218134130) do
+ActiveRecord::Schema.define(version: 20161219014647) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "task_id",        limit: 4
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20161218134130) do
     t.datetime "updated_at",                   null: false
     t.string   "email",            limit: 255
     t.integer  "roles_mask",       limit: 4
+    t.string   "phone",            limit: 255
   end
 
 end

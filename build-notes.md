@@ -35,3 +35,27 @@ config.assets.paths << Rails.root.join("vendor","assets","bower_components","jqu
 config.assets.paths << Rails.root.join("vendor","assets","bower_components","jquery-timepicker")
 ```
 
+Use date/time picker widget for datetime attributes
+```
+# /Users/davidvezzani/rails-app/wardmcm/app/inputs/date_time_input.rb
+template.content_tag(:div) do
+  [template.content_tag(:input, nil, {id: "#{self.object_name}_#{self.attribute_name}_date", class: 'form-control datetime optional', name: "#{self.object_name}[#{self.attribute_name}][date]"}), 
+   template.content_tag(:input, nil, {id: "#{self.object_name}_#{self.attribute_name}_time", class: 'form-control timetime optional', name: "#{self.object_name}[#{self.attribute_name}][time]"})].join("\n").html_safe
+end
+```
+
+Add phone number attribute for user
+```
+bin/rails g migration add_phone_number_to_users phone:string
+bin/rake db:migrate
+```
+
+Add draper for decorator support
+```
+# Gemfile
+gem 'draper'
+
+rails generate decorator User
+```
+
+
