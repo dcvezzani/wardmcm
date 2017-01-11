@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :less_active_members do
+    collection do
+      post 'import_names'
+    end
+  end
+
   resources :personal_history_stories
 
   resources :personal_history_stories, path: :fifty_two_stories

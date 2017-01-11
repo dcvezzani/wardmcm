@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Less Active Members</h1>
+
+<table id='less-active-member-list'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Current address</th>
+      <th>New address</th>
+      <th>New phone</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @less_active_members.each do |less_active_member| %>
+      <tr>
+        <td><%= link_to less_active_member.name, less_active_member.reference %></td>
+        <td><%= less_active_member.current_address %></td>
+        <td><%= less_active_member.new_address %></td>
+        <td><%= less_active_member.new_phone %></td>
+        <td><%= link_to 'Show', less_active_member %></td>
+        <td><%= link_to 'Edit', edit_less_active_member_path(less_active_member) %></td>
+        <td><%= button_to "delete", less_active_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Less active member', new_less_active_member_path %>
+
+<h1>Import Less Active Member Names</h1>
+
+<%= render 'import_names_form' %>
+
+<style>
+table#less-active-member-list tbody tr td{
+  padding: 5px;
+  padding-right: 2em;
+  vertical-align: top;
+}
+</style>

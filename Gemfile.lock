@@ -122,6 +122,8 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     multipart-post (2.0.0)
+    mutations (0.8.0)
+      activesupport
     mysql2 (0.3.18)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -255,6 +257,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  mutations
   mysql2 (= 0.3.18)
   omniauth
   omniauth-facebook (= 1.4.0)

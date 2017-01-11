@@ -64,3 +64,7 @@ bin/rails destroy scaffold PersonalHistoryStory
 bin/rails g scaffold PersonalHistoryStory subject body:text took_place_at:datetime
 bin/rake db:migrate
 
+bin/rails g scaffold LessActiveMember surname given_name current_address:text new_address:text new_phone reference:text
+#bin/rake db:rollback
+bin/rake db:migrate
+

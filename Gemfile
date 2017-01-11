@@ -79,3 +79,5 @@ gem "cocoon"
 gem 'bundler', '>= 1.8.4'
 
 gem 'draper'
+
+gem 'mutations'

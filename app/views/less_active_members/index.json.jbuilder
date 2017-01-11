@@ -1,0 +1,1 @@
+json.array! @less_active_members, partial: 'less_active_members/less_active_member', as: :less_active_member

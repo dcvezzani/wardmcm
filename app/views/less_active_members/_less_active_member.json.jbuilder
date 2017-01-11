@@ -1,0 +1,2 @@
+json.extract! less_active_member, :id, :surname, :given_name, :current_address, :new_address, :new_phone, :reference, :created_at, :updated_at
+json.url less_active_member_url(less_active_member, format: :json)

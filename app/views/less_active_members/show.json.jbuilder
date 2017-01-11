@@ -1,0 +1,1 @@
+json.partial! "less_active_members/less_active_member", less_active_member: @less_active_member
