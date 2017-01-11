@@ -1,0 +1,1 @@
+json.array! @personal_history_stories, partial: 'personal_history_stories/personal_history_story', as: :personal_history_story

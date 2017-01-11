@@ -58,4 +58,9 @@ gem 'draper'
 rails generate decorator User
 ```
 
+bin/rake db:rollback
+bin/rails destroy scaffold PersonalHistoryStory
+
+bin/rails g scaffold PersonalHistoryStory subject body:text took_place_at:datetime
+bin/rake db:migrate
 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @personal_history_story.subject %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @personal_history_story.body %>
+</p>
+
+<p>
+  <strong>Took place at:</strong>
+  <%= @personal_history_story.took_place_at %>
+</p>
+
+<%= link_to 'Edit', edit_personal_history_story_path(@personal_history_story) %> |
+<%= link_to 'Back', personal_history_stories_path %>

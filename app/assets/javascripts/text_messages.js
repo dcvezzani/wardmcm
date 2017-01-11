@@ -4,3 +4,9 @@ $(document).ready(function(){
   $('input#user_oauth_expires_at_date').datepicker();
   $('input#user_oauth_expires_at_time').timepicker();
 })
+
+$(document).ready(function(){
+  $('input#personal_history_story_took_place_at_date').datepicker();
+  $('input#personal_history_story_took_place_at_time').timepicker();
+})
+

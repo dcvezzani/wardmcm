@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219014647) do
+ActiveRecord::Schema.define(version: 20170107160414) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "task_id",        limit: 4
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 20161219014647) do
     t.text     "body",         limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "personal_history_stories", force: :cascade do |t|
+    t.string   "subject",       limit: 255
+    t.text     "body",          limit: 65535
+    t.datetime "took_place_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "recipes", force: :cascade do |t|

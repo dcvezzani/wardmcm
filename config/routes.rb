@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :personal_history_stories
+
+  resources :personal_history_stories, path: :fifty_two_stories
+
   resources :text_messages
 
   resources :notes

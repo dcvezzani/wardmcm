@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Personal History Stories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Body</th>
+      <th>Took place at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personal_history_stories.each do |personal_history_story| %>
+      <tr>
+        <td><%= personal_history_story.subject %></td>
+        <td><%= personal_history_story.body %></td>
+        <td><%= personal_history_story.took_place_at %></td>
+        <td><%= link_to 'Show', personal_history_story %></td>
+        <td><%= link_to 'Edit', edit_personal_history_story_path(personal_history_story) %></td>
+        <td><%= link_to 'Destroy', personal_history_story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Personal history story', new_personal_history_story_path %>

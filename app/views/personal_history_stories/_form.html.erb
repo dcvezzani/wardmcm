@@ -1,0 +1,13 @@
+<%= simple_form_for(@personal_history_story) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :subject %>
+    <%= f.input :body %>
+    <%= f.input :took_place_at %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
