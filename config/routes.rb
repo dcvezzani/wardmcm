@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :less_active_members do
+    member do
+      get 'edit_next'
+    end
     collection do
       post 'import_names'
     end

@@ -21,4 +21,8 @@ class LessActiveMemberDecorator < Draper::Decorator
   def new_address
     helpers.raw(object.new_address.split(/[\r\n]+/).join('<br/>')) unless object.new_address.nil?
   end
+
+  def references
+    helpers.raw(object.reference.split(/[\r\n]+/).map{|ref| "<li>#{helpers.link_to ref, ref, {target: '_new'}}</li>"}.join("\n")) unless(object.reference.blank?)
+  end
 end

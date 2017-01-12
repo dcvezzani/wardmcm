@@ -1,6 +1,7 @@
 class LessActiveMembersController < ApplicationController
   before_action :set_less_active_member, only: [:show, :edit, :update, :destroy]
   before_action :load_less_active_members, only: [:index, :import_names]
+  before_action :decorate_less_active_member, only: [:edit, :edit_next]
 
   # GET /less_active_members
   # GET /less_active_members.json
@@ -20,6 +21,13 @@ class LessActiveMembersController < ApplicationController
 
   # GET /less_active_members/1/edit
   def edit
+  end
+
+  # GET /less_active_members/1/edit
+  def edit_next
+    @less_active_members = LessActiveMemberDecorator.decorate_collection(LessActiveMember.no_new_address.order('surname, given_name asc'))
+    @less_active_member = @less_active_members.first
+    render :edit
   end
 
   # POST /less_active_members
@@ -49,7 +57,6 @@ class LessActiveMembersController < ApplicationController
         format.json { render :index, status: :created, location: @clean_import_names }
       else
         format.html { 
-          debugger
           render :index 
         }
         format.json { render json: @clean_import_names.errors, status: :unprocessable_entity }
@@ -65,7 +72,7 @@ class LessActiveMembersController < ApplicationController
 
     respond_to do |format|
       if(@clean_less_active_member_params.success? and @less_active_member.update(@clean_less_active_member_params.result))
-        format.html { redirect_to @less_active_member, notice: 'Less active member was successfully updated.' }
+        format.html { redirect_to edit_next_less_active_member_url, notice: 'Less active member was successfully updated.' }
         format.json { render :show, status: :ok, location: @less_active_member }
       else
         format.html { render :edit }
@@ -91,6 +98,10 @@ class LessActiveMembersController < ApplicationController
     @less_active_member = LessActiveMember.find(params[:id])
   end
 
+  def decorate_less_active_member
+    @less_active_member = LessActiveMemberDecorator.decorate(@less_active_member)
+  end
+
   def clean_less_active_member(&blk)
     @clean_less_active_member_params = LessActiveMemberCreate.run(less_active_member_params)
     if @clean_less_active_member_params.success?
@@ -103,11 +114,13 @@ class LessActiveMembersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def less_active_member_params
-    params.require(:less_active_member).permit(:surname, :given_name, :current_address, :new_address, :new_phone, :reference)
+    params.require(:less_active_member).permit(:surname, :given_name, :current_address, :new_address, :new_phone, :reference, tag_list: [])
   end
 
   def load_less_active_members
-    @less_active_members = LessActiveMemberDecorator.decorate_collection(LessActiveMember.all.order('surname, given_name asc'))
+    @less_active_members = LessActiveMemberDecorator.decorate_collection(LessActiveMember.order('surname, given_name asc'))
+    #@less_active_members = LessActiveMemberDecorator.decorate_collection(LessActiveMember.no_current_address.order('surname, given_name asc'))
+    @less_active_members_total_cnt = LessActiveMember.count
   end
 
   def import_names_params

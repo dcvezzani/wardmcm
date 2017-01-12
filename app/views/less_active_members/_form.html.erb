@@ -1,9 +1,10 @@
-<%= simple_form_for(@less_active_member) do |f| %>
+<%= simple_form_for(@less_active_member, builder: FormBuilder::Tags) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :surname %>
     <%= f.input :given_name %>
+    <%= f.status_tags :tag_list %>
     <%= f.input :current_address %>
     <%= f.input :new_address %>
     <%= f.input :new_phone %>
@@ -12,5 +13,15 @@
 
   <div class="form-actions">
     <%= f.button :submit %>
+    <%#= f.button :submit, "Update and Edit Next" %>
   </div>
 <% end %>
+
+<style>
+.less_active_member_tag_list span{
+  padding-right: 1em;
+}
+.less_active_member_tag_list span.tag_label{
+  padding-left: 5px;
+}
+</style>

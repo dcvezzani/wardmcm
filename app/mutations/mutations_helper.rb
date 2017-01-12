@@ -37,4 +37,12 @@ module MutationsHelper
     capitalized_terms = str.to_s.split(/ +/).map(&:capitalize)
     capitalized_terms.join(" ")
   end
+
+  def capitalize_first_char(str)
+    if str
+      "#{str[0].upcase}#{str[1...str.length]}"
+    else
+      str
+    end
+  end
 end

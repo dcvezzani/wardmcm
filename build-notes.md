@@ -68,3 +68,10 @@ bin/rails g scaffold LessActiveMember surname given_name current_address:text ne
 #bin/rake db:rollback
 bin/rake db:migrate
 
+bin/rails g migration add
+$ bin/rails generate migration AddPartNumberToProducts part_number:string:index
+bin/rails g migration AddLessActiveMemberIndexToSurnameGivenName 
+
+bin/rails g migration AddToProducts part_number:string:index
+
+add_index :products, :part_number

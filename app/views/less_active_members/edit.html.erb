@@ -2,5 +2,12 @@
 
 <%= render 'form' %>
 
+<h3>Current References</h3>
+<ul>
+  <%= @less_active_member.references %>
+</ul>
+
+<br/>
+
 <%= link_to 'Show', @less_active_member %> |
 <%= link_to 'Back', less_active_members_path %>

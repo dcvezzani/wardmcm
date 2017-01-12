@@ -8,7 +8,7 @@ class LessActiveMemberNameCreate < Mutations::Command
 
   def execute
     attrs = {
-      surname: clean(surname, :clean_string, :capitalize_string), 
+      surname: clean(surname, :clean_string, :capitalize_first_char), 
       given_name: clean(given_name, :clean_string, :capitalize_string)
     }
     attrs

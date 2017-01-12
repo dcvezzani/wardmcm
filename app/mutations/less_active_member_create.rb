@@ -11,11 +11,12 @@ class LessActiveMemberCreate < Mutations::Command
     string :new_phone, max_length: 255, empty: true
     string :new_address, max_length: 4000, empty: true
     string :reference, max_length: 4000, empty: true
+    array :tag_list, class: String
   end
 
   def execute
     attrs = {
-      surname: clean(surname, :clean_string, :capitalize_string), 
+      surname: clean(surname, :clean_string, :capitalize_first_char), 
       given_name: clean(given_name, :clean_string, :capitalize_string), 
       current_address: clean(current_address, :clean_string){[:capitalize_string, :uppercase_state, :segregate_phone]}, 
     }
@@ -24,6 +25,8 @@ class LessActiveMemberCreate < Mutations::Command
     attrs.merge!({ new_address: clean(new_address, :clean_string){[:capitalize_string, :uppercase_state, :segregate_phone]} }) unless new_address.nil?
     attrs.merge!({ reference: clean_string(reference) }) unless reference.nil?
 
+    attrs.merge!({ tags: tag_list })
+    
     attrs
   end  
 
