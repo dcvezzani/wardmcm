@@ -20,7 +20,7 @@
   <tbody>
     <% @less_active_members.each do |less_active_member| %>
       <tr>
-        <td><%= link_to less_active_member.name, less_active_member.reference, target: '_new' %></td>
+        <td><%= link_to less_active_member.name, less_active_member_resource_url(less_active_member, 0, "#{less_active_member.slug}.pdf"), target: '_new' %></td>
         <td><%= less_active_member.current_address %></td>
         <td><%= less_active_member.new_address %></td>
         <td><%= less_active_member.new_phone %></td>

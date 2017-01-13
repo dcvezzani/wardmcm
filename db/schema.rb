@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112154564) do
+ActiveRecord::Schema.define(version: 20170113141546) do
 
   create_table "assignments", force: :cascade do |t|
     t.integer  "task_id",        limit: 4
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170112154564) do
     t.text     "reference",       limit: 65535
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+    t.text     "resources",       limit: 65535
   end
 
   add_index "less_active_members", ["surname", "given_name"], name: "index_less_active_members_on_surname_and_given_name", using: :btree

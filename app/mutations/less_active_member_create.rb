@@ -14,6 +14,7 @@ class LessActiveMemberCreate < Mutations::Command
     string :reference, max_length: 4000, empty: true
     array :tag_list, class: String
     string :new_note, max_length: 4000, empty: true
+    string :resources, max_length: 4000, empty: true, strip: false
   end
 
   def execute
@@ -26,6 +27,7 @@ class LessActiveMemberCreate < Mutations::Command
     attrs.merge!({ new_phone: clean_string(new_phone) }) unless new_phone.nil?
     attrs.merge!({ new_address: clean(new_address, :clean_string){[:capitalize_string, :uppercase_state, :segregate_phone]} }) unless new_address.nil?
     attrs.merge!({ reference: clean_string(reference) }) unless reference.nil?
+    attrs.merge!({ resources: resources }) unless resources.nil?
     attrs.merge!({ new_note: new_note }) unless new_note.nil?
     attrs.merge!({ author_id: current_user_id }) unless current_user_id.nil?
 

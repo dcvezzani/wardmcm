@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'less_active_members/:id/resource/:rid/:slug' => 'less_active_members#resource', as: :less_active_member_resource
+  
   resources :less_active_members do
     member do
       get 'edit_next'

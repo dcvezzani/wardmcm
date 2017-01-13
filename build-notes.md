@@ -78,3 +78,50 @@ add_index :products, :part_number
 
 bin/rails g scaffold Note user_id:integer body:text
 
+bin/rails g migration add_resources_to_less_active_members resources:text
+
+
+class CreateNotes < ActiveRecord::Migration
+  def change
+    create_table :notes do |t|
+      t.integer :notable_id
+      t.string :notable_type
+      t.integer :author_id
+      t.string :title
+      t.text :body
+
+      t.timestamps null: false
+    end
+  end
+end
+
+bin/rails g scaffold Attachment user_id:integer body:text
+
+render file: "/u/apps/warehouse_app/current/app/views/products/show"
+
+bin/rails destroy controller File
+bin/rails g controller File file
+
+      create  app/controllers/file_controller.rb
+       route  get 'file/file'
+      invoke  erb
+      create    app/views/file
+      create    app/views/file/file.html.erb
+      invoke  rspec
+      create    spec/controllers/file_controller_spec.rb
+      create    spec/views/file
+      create    spec/views/file/file.html.erb_spec.rb
+      invoke  helper
+      create    app/helpers/file_helper.rb
+      invoke    rspec
+      create      spec/helpers/file_helper_spec.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/file.coffee
+      invoke    scss
+      create      app/assets/stylesheets/file.scss
+      invoke  decorator
+      create    app/decorators/file_decorator.rb
+      invoke    rspec
+      create      spec/decorators/file_decorator_spec.rb
+

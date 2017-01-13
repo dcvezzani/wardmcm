@@ -9,6 +9,7 @@
     <%= f.input :new_address %>
     <%= f.input :new_phone %>
     <%= f.input :reference %>
+    <%= f.input :resources %>
     <%= f.input :new_note, as: :text %>
   </div>
 
@@ -18,9 +19,26 @@
   </div>
 <% end %>
 
+<h3>Other Possible Resources</h3>
+<% if @less_active_member.fuzzy_resources %>
+<form action="" class='simple_form fuzzy_resources'>
+  <div class="form-inputs">
+    <div class="form-group text optional">
+      <textarea id="" class='form-control text optional' name=""><%= @less_active_member.fuzzy_resources.join("\n") %></textarea>
+    </div>
+  </div>
+</form>
+<% else %>
+<p>None</p>
+<% end %>
+
+
 <h3>Current References</h3>
 <ul>
   <%= @less_active_member.references %>
+</ul>
+<ul>
+  <%= @less_active_member.resources %>
 </ul>
 
 <br/>
@@ -51,5 +69,8 @@
 }
 .less_active_member_tag_list span.tag_label{
   padding-left: 5px;
+}
+.fuzzy_resources{
+  margin-top: 15px;
 }
 </style>

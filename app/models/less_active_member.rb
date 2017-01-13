@@ -19,11 +19,10 @@ class LessActiveMember < ActiveRecord::Base
   end
   
   def add_note
-    unless self.new_note.empty?
+    unless self.new_note.blank?
       attrs = {body: self.new_note}
       attrs.merge!({author_id: self.author_id}) unless self.author_id.nil?
       self.notes << Note.new(attrs)
     end
   end
-  
 end
