@@ -72,7 +72,7 @@ class LessActiveMembersController < ApplicationController
 
     respond_to do |format|
       if(@clean_less_active_member_params.success? and @less_active_member.update(@clean_less_active_member_params.result))
-        format.html { redirect_to edit_next_less_active_member_url, notice: 'Less active member was successfully updated.' }
+        format.html { redirect_to less_active_member_url(@less_active_member), notice: 'Less active member was successfully updated.' }
         format.json { render :show, status: :ok, location: @less_active_member }
       else
         format.html { render :edit }
@@ -114,7 +114,8 @@ class LessActiveMembersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def less_active_member_params
-    params.require(:less_active_member).permit(:surname, :given_name, :current_address, :new_address, :new_phone, :reference, tag_list: [])
+    clean_params = params.require(:less_active_member).permit(:surname, :given_name, :current_address, :new_address, :new_phone, :reference, :new_note, tag_list: [])
+    clean_params.merge!({current_user_id: current_user.id}) unless current_user.nil?
   end
 
   def load_less_active_members

@@ -9,6 +9,7 @@
     <%= f.input :new_address %>
     <%= f.input :new_phone %>
     <%= f.input :reference %>
+    <%= f.input :new_note, as: :text %>
   </div>
 
   <div class="form-actions">
@@ -16,6 +17,33 @@
     <%#= f.button :submit, "Update and Edit Next" %>
   </div>
 <% end %>
+
+<h3>Current References</h3>
+<ul>
+  <%= @less_active_member.references %>
+</ul>
+
+<br/>
+
+<div class="notes">
+  <h3>Notes</h3>
+  
+  <% @less_active_member.notes.each do |note| %>
+    <div class="note note-<%= note.id%>">
+      <div class="header">
+        <div class="title"> <%= note.title%> </div>
+        <div class="date"> <%= note.created_at %> </div>
+        <div class="author"> <%= note.author.name %> </div>
+      </div>
+
+      <div class="body">
+      <%= note.body%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<br/>
 
 <style>
 .less_active_member_tag_list span{

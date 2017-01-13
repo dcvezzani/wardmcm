@@ -4,6 +4,7 @@ module FormBuilder
       tag_values = [
         OpenStruct.new({id: :name_changed, value: :name_changed}), 
         OpenStruct.new({id: :moved, value: :moved}), 
+        OpenStruct.new({id: :moved_out_of_ward, value: :moved_out_of_ward}), 
         OpenStruct.new({id: :moved_out_of_state, value: :moved_out_of_state}), 
         OpenStruct.new({id: :died, value: :died})
       ]

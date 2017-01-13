@@ -75,3 +75,6 @@ bin/rails g migration AddLessActiveMemberIndexToSurnameGivenName
 bin/rails g migration AddToProducts part_number:string:index
 
 add_index :products, :part_number
+
+bin/rails g scaffold Note user_id:integer body:text
+
