@@ -10,10 +10,10 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Current address</th>
-      <th>New address</th>
+      <th class='address'>Current address</th>
+      <th class='address' class>New address</th>
+      <th>New phone</th>
       <th>Tags</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -23,27 +23,21 @@
         <td><%= link_to less_active_member.name, less_active_member_resource_url(less_active_member, 0, "#{less_active_member.slug}.pdf"), target: '_new' %></td>
         <td><%= less_active_member.current_address %></td>
         <td><%= less_active_member.new_address %></td>
-        <td><%= less_active_member.tag_list.join(", ") %></td>
-        <td><%= link_to 'Show', less_active_member %></td>
-        <td><%= link_to 'Edit', edit_less_active_member_path(less_active_member), target: '_new' %></td>
-        <td><%= button_to "delete", less_active_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= less_active_member.new_phone %></td>
+        <td><%= raw(less_active_member.tag_list.join("<br\>")) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Less active member', new_less_active_member_path %>
-
-<h1>Import Less Active Member Names</h1>
-
-<%= render 'import_names_form' %>
 
 <style>
 table#less-active-member-list tbody tr td{
   padding: 5px;
   padding-right: 2em;
   vertical-align: top;
+}
+
+th.address{
+  width: 200px;
 }
 </style>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'edit_next'
     end
     collection do
+      get 'list'
       post 'import_names'
     end
   end

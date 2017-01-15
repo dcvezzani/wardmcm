@@ -1,12 +1,33 @@
 class LessActiveMembersController < ApplicationController
   before_action :set_less_active_member, only: [:show, :edit, :update, :destroy, :resource]
-  before_action :load_less_active_members, only: [:index, :import_names]
+  before_action :load_less_active_members, only: [:index, :import_names, :list]
   before_action :decorate_less_active_member, only: [:edit, :edit_next]
 
   # GET /less_active_members
   # GET /less_active_members.json
   def index
     @clean_import_names = LessActiveMemberNames.new
+  end
+
+  def list
+    filter = params.fetch(:filter, "all")
+    filtered_less_active_members = LessActiveMember.order('surname, given_name asc')
+
+    case(filter)
+    when "no_change"
+      filtered_less_active_members = filtered_less_active_members.no_change
+    when "moved"
+      filtered_less_active_members = filtered_less_active_members.moved
+    when "new_ward"
+      filtered_less_active_members = filtered_less_active_members.new_ward
+    when "new_state"
+      filtered_less_active_members = filtered_less_active_members.new_state
+    when "died"
+      filtered_less_active_members = filtered_less_active_members.died
+    end
+
+    @less_active_members = LessActiveMemberDecorator.decorate_collection(filtered_less_active_members)
+    render layout: false
   end
 
   # GET /less_active_members/1
